@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://slug5iqsl8ee"]
+
+[ext_resource type="Script" path="res://scripts/snake_board.gd" id="1_v6n4m"]
+
+[node name="SnakeBoard" type="Node2D"]
+script = ExtResource("1_v6n4m")
+
+[node name="FlashTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

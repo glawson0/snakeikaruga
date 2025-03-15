@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuuifx1hss2lh"]
+
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_lsysh"]
+[ext_resource type="Texture2D" uid="uid://dpboldjw2np63" path="res://resources/TileOutline.png" id="1_va5pj"]
+[ext_resource type="Shader" path="res://prefabs/tileCenterV3.gdshader" id="2_vuh7a"]
+[ext_resource type="Texture2D" uid="uid://b4cs0ujqiu7ss" path="res://resources/TileCenter.png" id="3_0dtgw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbtpl"]
+resource_local_to_scene = true
+shader = ExtResource("2_vuh7a")
+shader_parameter/ColorParameter = Color(0.0588235, 0.341176, 0.439216, 0)
+
+[node name="Tile" type="Node2D"]
+script = ExtResource("1_lsysh")
+
+[node name="Center" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_hbtpl")
+texture = ExtResource("3_0dtgw")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Outline" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_va5pj")
+centered = false
+metadata/_edit_lock_ = true
