@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc15ch7x0e4xi"]
+
+[ext_resource type="Script" path="res://scripts/color_indicator.gd" id="1_6vwce"]
+[ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="1_uctih"]
+[ext_resource type="Texture2D" uid="uid://kv0thxurexyb" path="res://resources/ColorOutline.png" id="1_wirw7"]
+[ext_resource type="Texture2D" uid="uid://buc2c6qx2ltx2" path="res://resources/ColorCenter.png" id="2_67lw4"]
+[ext_resource type="Texture2D" uid="uid://cmtkgy1383mu0" path="res://resources/ColorSelected.png" id="3_jfot7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ph31n"]
+resource_local_to_scene = true
+shader = ExtResource("1_uctih")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqawe"]
+resource_local_to_scene = true
+shader = ExtResource("1_uctih")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyxos"]
+resource_local_to_scene = true
+shader = ExtResource("1_uctih")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[node name="PrimaryIndicator" type="Node2D"]
+position = Vector2(128, 48)
+script = ExtResource("1_6vwce")
+
+[node name="Outline" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ph31n")
+texture = ExtResource("1_wirw7")
+
+[node name="Center" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_jqawe")
+texture = ExtResource("2_67lw4")
+
+[node name="SelectedOutline" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_uyxos")
+texture = ExtResource("3_jfot7")

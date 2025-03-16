@@ -8,7 +8,7 @@ void fragment() {
     if (tex_color.a < 0.1) {
         discard;  // Ignore fully transparent parts
     }
-    
+
     // Apply effects only on visible parts
     COLOR = tex_color * ColorParameter;
 }

@@ -1,12 +1,13 @@
-extends Node2D
+extends Area2D
 class_name BoardTile
 
 const CLEAR: Color = Color(1,1,1,0)
 
 var x:int
 var y:int
-var is_snake = false
+var state: Contains = Contains.Empty
 
+enum Contains {Empty, Snake, Pellet}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,15 +27,27 @@ func init(x:int, y:int):
 ## Sets tile as a Snake 
 ## return true if successful, false if cannot
 func set_snake(color: Color) -> bool:
-	if(is_snake):
+	if(state == Contains.Snake):
 		return false
 	%Center.material.set_shader_parameter("ColorParameter",color)
-	is_snake = true
+	state = Contains.Snake
+	set_deferred("monitoring",true)
 	return true
 
-func clear_snake():
+func clear():
 	%Center.material.set_shader_parameter("ColorParameter",CLEAR)
-	is_snake = false
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	set_deferred("monitoring",false)
+	state = Contains.Empty
+
+func set_pellet(color:Color):
+	state = Contains.Pellet
+	%Center.material.set_shader_parameter("ColorParameter",color)
+
+func is_pellet()-> bool:
+	return state == Contains.Pellet
+
+func is_empty()-> bool:
+	return state == Contains.Empty
+
+func update_color(color: Color):
+	%Center.material.set_shader_parameter("ColorParameter",color)

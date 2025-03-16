@@ -1,20 +1,24 @@
 extends Node2D
 const TILE_LAYER = 2
 
-@export var SNAKE_COLOR: Color
-var MOVE_INTERVAL: float = .1
+const MOVE_INTERVAL: float = .1
 
 @onready var TILE_PREFAB = preload("res://prefabs/tile.tscn")
+
 var map = []
-var snake: Array[BoardTile] = []
 var timer=0.0
 
 var sm: SnakeManager
+var pp: PelletPlacer
 
 func _ready() -> void:
+	sm = %SnakeManager
+	pp = %PelletPlacer
 	populate_grid(20,20)
-	sm = SnakeManager.new(SNAKE_COLOR)
+	pp.init(20*20)
 	populate_snake(4,4,3)
+	populate_pellets(4)
+	populate_tanks()
 
 func populate_grid(cols: int, rows: int):
 	for y in range(0,rows):
@@ -26,6 +30,7 @@ func populate_grid(cols: int, rows: int):
 			var x_margin = 2 if x > 0 else 0
 			curr.position = Vector2(x* (curr.get_width() + x_margin), y* (curr.get_height() + y_margin))
 			curr.z_index = TILE_LAYER
+			curr.area_entered.connect(on_tile_entry)
 			add_child(curr)
 			row.append(curr)
 		map.append(row)
@@ -33,10 +38,36 @@ func populate_grid(cols: int, rows: int):
 func populate_snake(x: int, y: int, len: int):
 	for i in range(0,len):
 		var curr:= map[y][x-i] as BoardTile
-		curr.set_snake(SNAKE_COLOR)
-		snake.append(curr)
+		curr.set_snake(sm.active_color)
+		sm.tiles.append(curr)
+		
+func populate_pellets(num_pellets: int):
+	for i in range(0,num_pellets):
+		add_pellet()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func map_positions(tile) -> Vector2:
+	var pos = Vector2(tile.position)
+	pos.y = pos.y - %Tank.get_y_offset()
+	return pos
+	
+func populate_tanks():
+	var locations: Array = map[0].map(map_positions)
+	var lp = ListLocationProvider.new(locations)
+	%Tank.init(lp, Globals.Colors.GREEN)
+
+func get_tile_from_index(index: int) -> BoardTile:
+	var y = index/map[0].size()
+	var x = index % map[0].size()
+	return map[y][x]
+
+func add_pellet():
+	var index = pp.next_tile_index()
+	var tile = get_tile_from_index(index)
+	while(not tile.is_empty()):
+		index = pp.next_tile_index()
+		tile = get_tile_from_index(index)
+	tile.set_pellet(pp.get_color())
+	
 func _process(delta: float) -> void:
 	timer += delta
 	while(timer > MOVE_INTERVAL):
@@ -44,20 +75,21 @@ func _process(delta: float) -> void:
 		process_move()
 	
 func process_move() -> bool:
-	snake.pop_back().clear_snake()
-	var front = snake.front()
-	var next:BoardTile = get_next_tile(sm.direction, front)
-	if not next.set_snake(SNAKE_COLOR):
-		kill_snake()
-		return false
-	snake.push_front(next)
-	return true
-
-func kill_snake():
-	if not sm.invincible:
-		await get_tree().create_timer(5.0).timeout
-
-
+	var front = sm.tiles.front()
+	var next: BoardTile = get_next_tile(sm.direction, front)
+	if next.is_pellet():
+		add_pellet()
+	else:
+		var back = sm.tiles.pop_back()
+		if(sm.tiles.find(back) == -1):
+			back.clear()
+	
+	var backtrack = false
+	if not next.set_snake(sm.active_color):
+		sm.do_damage()
+		backtrack = true
+	sm.tiles.push_front(next)
+	return not backtrack
 
 func get_next_tile(dir: Globals.Direction, front: BoardTile) -> BoardTile:
 	var next: BoardTile
@@ -100,6 +132,9 @@ func get_next_tile(dir: Globals.Direction, front: BoardTile) -> BoardTile:
 				sm.direction = Globals.Direction.DOWN
 	return next
 
-#func _on_flash_timer_timeout() -> void:
-	#for bt in snake:
-#		bt.
+func on_tile_entry(Area: Area2D):
+	var bullet = Area as TankBullet
+	if bullet.color != sm.selected_color:
+		if sm.do_damage():
+			bullet.queue_free()
+	
