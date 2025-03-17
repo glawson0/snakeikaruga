@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cigk2v723fuvc"]
+[gd_scene load_steps=4 format=3 uid="uid://cigk2v723fuvc"]
 
 [ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="1_c4oqe"]
 [ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_cdi8c"]
+[ext_resource type="PackedScene" uid="uid://b5aa1mfkw4h5w" path="res://prefabs/tank.tscn" id="3_l7qqf"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_cdi8c")
@@ -16,3 +17,7 @@ offset_bottom = 1000.0
 mouse_filter = 2
 color = Color(0, 0.0627451, 0, 1)
 metadata/_edit_lock_ = true
+
+[node name="Tank" parent="." instance=ExtResource("3_l7qqf")]
+unique_name_in_owner = true
+position = Vector2(224, 128)

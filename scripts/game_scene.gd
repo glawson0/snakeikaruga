@@ -1,13 +1,17 @@
-extends Node2D
+extends BaseLevel
 
 const inputActions = ["up", "down", "left", "right"]
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var board:SnakeBoard
+var goal = 10
+
+func _ready():
+	board = %SnakeBoard
+	board.init(goal)
+	board.game_won.connect(game_won)
+
 func _process(delta: float) -> void:
-	
-	for direction in Globals.Direction:
-		if Input.is_action_just_pressed(direction.to_lower()):
-			%SnakeBoard.sm.direction = Globals.Direction.get(direction)
-	
-	if Input.is_action_just_pressed("color_swap"):
-		%SnakeBoard.sm.swap_color()
+	super._process(delta)
+
+func game_won():
+	get_tree().change_scene_to_packed(load("res://scenes/MainMenu.tscn"))

@@ -17,7 +17,7 @@ var primary_color: Globals.Colors
 var secondary_color: Globals.Colors
 var is_primary_selected= true
 
-func _ready() -> void:
+func init() -> void:
 	primary_color = Globals.Colors.GREEN
 	%PrimaryIndicator.set_color(Globals.COLOR_MAP[primary_color])
 	%PrimaryIndicator.set_selected(true)

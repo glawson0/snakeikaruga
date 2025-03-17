@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://slug5iqsl8ee"]
+[gd_scene load_steps=7 format=3 uid="uid://slug5iqsl8ee"]
 
 [ext_resource type="Script" path="res://scripts/snake_board.gd" id="1_v6n4m"]
 [ext_resource type="Script" path="res://scripts/snake_manger.gd" id="2_ktkc2"]
 [ext_resource type="Script" path="res://scripts/pellet_placer.gd" id="3_m157m"]
 [ext_resource type="PackedScene" uid="uid://cc15ch7x0e4xi" path="res://prefabs/color_indicator.tscn" id="4_ed037"]
-[ext_resource type="PackedScene" uid="uid://b5aa1mfkw4h5w" path="res://prefabs/tank.tscn" id="5_8srun"]
+[ext_resource type="FontFile" uid="uid://h2e6j0cqjrkl" path="res://resources/menu/HomeVideo-BLG6G.ttf" id="5_mdhpk"]
+
+[sub_resource type="Theme" id="Theme_s3ef2"]
+default_font = ExtResource("5_mdhpk")
+default_font_size = 40
 
 [node name="SnakeBoard" type="Node2D"]
 script = ExtResource("1_v6n4m")
@@ -27,10 +31,15 @@ position = Vector2(192, -112)
 [node name="SecondaryIndicator" parent="." instance=ExtResource("4_ed037")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(456, -112)
+position = Vector2(352, -112)
 rotation = 3.14159
 
-[node name="Tank" parent="." instance=ExtResource("5_8srun")]
+[node name="ScoreLabel" type="Label" parent="."]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(208, -64)
+offset_left = 512.0
+offset_top = -128.0
+offset_right = 752.0
+offset_bottom = -88.0
+theme = SubResource("Theme_s3ef2")
+text = "Goal: 3/10"

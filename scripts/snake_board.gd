@@ -1,24 +1,29 @@
 extends Node2D
-const TILE_LAYER = 2
+class_name SnakeBoard
 
+const TILE_LAYER = 2
 const MOVE_INTERVAL: float = .1
+signal game_won
 
 @onready var TILE_PREFAB = preload("res://prefabs/tile.tscn")
 
 var map = []
 var timer=0.0
+var goal
 
 var sm: SnakeManager
 var pp: PelletPlacer
 
-func _ready() -> void:
+func init(goal: int) -> void:
 	sm = %SnakeManager
+	sm.init()
 	pp = %PelletPlacer
-	populate_grid(20,20)
 	pp.init(20*20)
+	self.goal = goal
+	populate_grid(20,20)
 	populate_snake(4,4,3)
 	populate_pellets(4)
-	populate_tanks()
+	update_goal()
 
 func populate_grid(cols: int, rows: int):
 	for y in range(0,rows):
@@ -45,16 +50,6 @@ func populate_pellets(num_pellets: int):
 	for i in range(0,num_pellets):
 		add_pellet()
 
-func map_positions(tile) -> Vector2:
-	var pos = Vector2(tile.position)
-	pos.y = pos.y - %Tank.get_y_offset()
-	return pos
-	
-func populate_tanks():
-	var locations: Array = map[0].map(map_positions)
-	var lp = ListLocationProvider.new(locations)
-	%Tank.init(lp, Globals.Colors.GREEN)
-
 func get_tile_from_index(index: int) -> BoardTile:
 	var y = index/map[0].size()
 	var x = index % map[0].size()
@@ -77,8 +72,11 @@ func _process(delta: float) -> void:
 func process_move() -> bool:
 	var front = sm.tiles.front()
 	var next: BoardTile = get_next_tile(sm.direction, front)
+	
+	var ate_pellet = false
 	if next.is_pellet():
 		add_pellet()
+		ate_pellet = true
 	else:
 		var back = sm.tiles.pop_back()
 		if(sm.tiles.find(back) == -1):
@@ -87,8 +85,11 @@ func process_move() -> bool:
 	var backtrack = false
 	if not next.set_snake(sm.active_color):
 		sm.do_damage()
+		update_goal()
 		backtrack = true
 	sm.tiles.push_front(next)
+	if ate_pellet:
+		update_goal()
 	return not backtrack
 
 func get_next_tile(dir: Globals.Direction, front: BoardTile) -> BoardTile:
@@ -137,4 +138,10 @@ func on_tile_entry(Area: Area2D):
 	if bullet.color != sm.selected_color:
 		if sm.do_damage():
 			bullet.queue_free()
+			update_goal()
 	
+func update_goal():
+	var score = sm.tiles.size()
+	%ScoreLabel.text = "Goal: %d/%d"%[score, goal]
+	if score == goal:
+		game_won.emit()

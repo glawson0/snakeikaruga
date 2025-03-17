@@ -6,9 +6,6 @@ var is_idle = true
 var locationProvider:LocationProvider
 var color: Globals.Colors
 
-func _ready() -> void:
-	pass # Replace with function body.
-
 func init(locationProvider: LocationProvider, color: Globals.Colors):
 	self.locationProvider = locationProvider
 	self.color=color

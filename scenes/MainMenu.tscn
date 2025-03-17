@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://qvi6errvxirw"]
+[gd_scene load_steps=6 format=3 uid="uid://qvi6errvxirw"]
 
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_6jlao"]
 [ext_resource type="Theme" uid="uid://cjl21jh7dmu32" path="res://resources/menu/main_menu_theme.tres" id="1_i0qbq"]
 [ext_resource type="Texture2D" uid="uid://b8y4huh8issr" path="res://resources/menu/growing.png" id="2_hfug0"]
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="3_rxgge"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6jlao")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1000, 1000)
@@ -194,9 +196,12 @@ text = "Swap
 layout_mode = 2
 action = "color_swap"
 
-[node name="Button" type="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
+[node name="BackButton" type="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_i0qbq")
+theme_override_font_sizes/font_size = 18
 text = "Back"
 
+[connection signal="pressed" from="Menus/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menus/VBoxContainer/OptionsButton" to="OptionsMenu" method="_on_options_button_pressed"]
-[connection signal="pressed" from="OptionsMenu/VBoxContainer2/VBoxContainer/Button" to="OptionsMenu" method="_on_back_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/VBoxContainer2/VBoxContainer/BackButton" to="OptionsMenu" method="_on_back_button_pressed"]
