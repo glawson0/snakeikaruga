@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cjl21jh7dmu32"]
+
+[ext_resource type="FontFile" uid="uid://h2e6j0cqjrkl" path="res://resources/menu/HomeVideo-BLG6G.ttf" id="1_deadl"]
+[ext_resource type="FontFile" uid="uid://cxsnbloco4ten" path="res://resources/menu/HomeVideoBold-R90Dv.ttf" id="2_1lxi1"]
+
+[resource]
+default_font_size = 100
+Button/fonts/font = ExtResource("1_deadl")
+RichTextLabel/fonts/bold_font = ExtResource("2_1lxi1")
+RichTextLabel/fonts/normal_font = ExtResource("1_deadl")
