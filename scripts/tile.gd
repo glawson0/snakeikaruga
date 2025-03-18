@@ -19,9 +19,9 @@ func get_width() -> int:
 func get_height() -> int:
 	return %Outline.texture.get_height()
 
-func init(x:int, y:int):
-	self.x = x
-	self.y = y
+func init(co_x:int, co_y:int):
+	x = co_x
+	y = co_y
 	
 	
 ## Sets tile as a Snake 

@@ -10,7 +10,7 @@ const AUDIO_CONFIG_SECTION = "Audio"
 @export var feedback_sound_path: NodePath
 
 var _feedback_sound: AudioStreamPlayer = null
-var _original_bus_volume : float = 1.0
+var _original_bus_volume : float = 0.5
 
 var _bus_index = 0
 

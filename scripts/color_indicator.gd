@@ -4,8 +4,8 @@ class_name ColorIndicator
 var color: Color
 var is_selected= false
 
-func set_color(color: Color):
-	self.color = color
+func set_color(color_val: Color):
+	color = color_val
 	%Center.material.set_shader_parameter("ColorParameter",color)
 
 func set_selected(selected: bool):

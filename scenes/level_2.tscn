@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b12a5gxn8o5eg"]
+
+[ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_8jnp6"]
+[ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="2_ob36n"]
+[ext_resource type="PackedScene" uid="uid://b5aa1mfkw4h5w" path="res://prefabs/tank.tscn" id="3_wil1m"]
+[ext_resource type="PackedScene" uid="uid://ce2r6mevl3dp2" path="res://addons/gwj_accessibility_scripts/options/rebindable_action.tscn" id="5_8x43j"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_8jnp6")
+
+[node name="SnakeBoard" parent="." instance=ExtResource("2_ob36n")]
+unique_name_in_owner = true
+position = Vector2(192, 192)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1000.0
+offset_bottom = 1000.0
+mouse_filter = 2
+color = Color(0, 0.0627451, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Tank" parent="." instance=ExtResource("3_wil1m")]
+unique_name_in_owner = true
+position = Vector2(224, 128)
+
+[node name="Button" parent="." instance=ExtResource("5_8x43j")]
+offset_left = 448.0
+offset_top = 928.0
+offset_right = 502.0
+offset_bottom = 959.0
+disabled = true
+action = "swap_color"

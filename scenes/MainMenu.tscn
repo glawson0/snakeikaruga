@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://qvi6errvxirw"]
+[gd_scene load_steps=7 format=3 uid="uid://qvi6errvxirw"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_6jlao"]
 [ext_resource type="Theme" uid="uid://cjl21jh7dmu32" path="res://resources/menu/main_menu_theme.tres" id="1_i0qbq"]
 [ext_resource type="Texture2D" uid="uid://b8y4huh8issr" path="res://resources/menu/growing.png" id="2_hfug0"]
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="3_rxgge"]
 [ext_resource type="PackedScene" uid="uid://ce2r6mevl3dp2" path="res://addons/gwj_accessibility_scripts/options/rebindable_action.tscn" id="3_x5bqt"]
+[ext_resource type="PackedScene" uid="uid://cxch7x2j3wv3p" path="res://addons/gwj_accessibility_scripts/options/volume_slider.tscn" id="6_v0s74"]
 
 [node name="Root" type="Control"]
 layout_mode = 3
@@ -44,7 +45,7 @@ theme_override_constants/separation = 45
 layout_mode = 2
 theme = ExtResource("1_i0qbq")
 bbcode_enabled = true
-text = "Snake Ikaruga"
+text = "Painted Snake"
 fit_content = true
 autowrap_mode = 0
 
@@ -195,6 +196,18 @@ text = "Swap
 [node name="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer5" instance=ExtResource("3_x5bqt")]
 layout_mode = 2
 action = "color_swap"
+
+[node name="VolumeBox" type="HBoxContainer" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/VolumeBox"]
+layout_mode = 2
+text = "Volume"
+
+[node name="VolumeSlider" parent="OptionsMenu/VBoxContainer2/VBoxContainer/VolumeBox" instance=ExtResource("6_v0s74")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="BackButton" type="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
 layout_mode = 2

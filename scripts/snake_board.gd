@@ -2,8 +2,9 @@ extends Node2D
 class_name SnakeBoard
 
 const TILE_LAYER = 2
-const MOVE_INTERVAL: float = .1
+const MOVE_INTERVAL: float = .09
 signal game_won
+signal game_lost
 
 @onready var TILE_PREFAB = preload("res://prefabs/tile.tscn")
 
@@ -14,12 +15,12 @@ var goal
 var sm: SnakeManager
 var pp: PelletPlacer
 
-func init(goal: int) -> void:
+func init(score: int) -> void:
 	sm = %SnakeManager
 	sm.init()
 	pp = %PelletPlacer
 	pp.init(20*20)
-	self.goal = goal
+	goal = score
 	populate_grid(20,20)
 	populate_snake(4,4,3)
 	populate_pellets(4)
@@ -40,8 +41,8 @@ func populate_grid(cols: int, rows: int):
 			row.append(curr)
 		map.append(row)
 
-func populate_snake(x: int, y: int, len: int):
-	for i in range(0,len):
+func populate_snake(x: int, y: int, length: int):
+	for i in range(0,length):
 		var curr:= map[y][x-i] as BoardTile
 		curr.set_snake(sm.active_color)
 		sm.tiles.append(curr)
