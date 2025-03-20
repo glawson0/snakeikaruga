@@ -47,7 +47,7 @@ func enter_damaged_state():
 	flashing_timer = 0
 	var player = AudioStreamPlayer2D.new()
 	player.stream = hurt_sfx
-	player.volume_db = 0.0
+	player.volume_db = -3.0
 	add_child(player)
 	player.play()
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPAWN_OFFSET = Vector2(16,64)
+const SPAWN_OFFSET = Vector2(0,64)
 const BULLET_SPEED = Vector2(0, 4*64)
 const TANK_MOVE_SPEED = 128
 var bullet_prefab = preload("res://prefabs/tank_bullet.tscn")
@@ -45,7 +45,7 @@ func set_color(color_val:Color):
 	%CannonCenter.material.set_shader_parameter("ColorParameter",color_val)
 
 func get_y_offset()-> float:
-	return 64
+	return 64 + 16
 
 func _play_sfx(sfx: AudioStream, volume: float):
 	var player = AudioStreamPlayer2D.new()

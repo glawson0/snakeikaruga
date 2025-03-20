@@ -12,7 +12,7 @@ script = ExtResource("1_mnlrt")
 
 [node name="SnakeBoard" parent="." instance=ExtResource("2_l747a")]
 unique_name_in_owner = true
-position = Vector2(192, 192)
+position = Vector2(240, 192)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1000.0

@@ -4,7 +4,7 @@ var goal = 10
 
 func _ready():
 	super._ready()
-	board.init(goal)
+	board.init(goal, 15, 15)
 
 func _process(delta: float) -> void:
 	super._process(delta)

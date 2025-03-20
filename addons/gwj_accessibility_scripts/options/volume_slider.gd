@@ -19,7 +19,7 @@ func _ready() -> void:
 		_feedback_sound = get_node(feedback_sound_path)
 	_bus_index = AudioServer.get_bus_index(bus_name)
 	_original_bus_volume = db_to_linear(AudioServer.get_bus_volume_db(_bus_index))
-	var config_value = Config.get_config(AUDIO_CONFIG_SECTION, bus_name, 1.0)
+	var config_value = Config.get_config(AUDIO_CONFIG_SECTION, bus_name, value)
 	set_value_no_signal(config_value)
 	_set_volume(config_value)
 	if not value_changed.is_connected(_on_value_changed):

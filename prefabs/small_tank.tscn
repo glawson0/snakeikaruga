@@ -18,11 +18,10 @@ shader = ExtResource("2_c57kl")
 shader_parameter/ColorParameter = Color(0.082269, 0.415209, 0.533856, 1)
 
 [node name="SmallTank" type="Node2D"]
-position = Vector2(16, 0)
 script = ExtResource("1_7hvja")
 
 [node name="Cannon" type="Node2D" parent="."]
-position = Vector2(-16, 0)
+position = Vector2(-32, 0)
 
 [node name="CannonCenter" type="Sprite2D" parent="Cannon"]
 unique_name_in_owner = true
@@ -35,7 +34,7 @@ position = Vector2(32, 40)
 texture = ExtResource("4_ootk2")
 
 [node name="Body" type="Node2D" parent="."]
-position = Vector2(-16, 0)
+position = Vector2(-32, 0)
 
 [node name="BodyCenter" type="Sprite2D" parent="Body"]
 unique_name_in_owner = true

@@ -20,6 +20,7 @@ script = ExtResource("1_lsysh")
 [node name="Center" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_hbtpl")
+position = Vector2(-16, -16)
 texture = ExtResource("3_0dtgw")
 centered = false
 region_enabled = true
@@ -27,11 +28,9 @@ region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Outline" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-16, -16)
 texture = ExtResource("1_va5pj")
 centered = false
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_aqthp")
-metadata/_edit_lock_ = true

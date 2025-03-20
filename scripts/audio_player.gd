@@ -19,5 +19,4 @@ func play_menu_music():
 	_play_music(menu_music)
 
 func play_level_music():
-	pass
-	#_play_music(level_music)
+	_play_music(level_music)

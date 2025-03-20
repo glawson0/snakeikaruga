@@ -4,7 +4,7 @@ var goal = 15
 
 func _ready():
 	super._ready()
-	board.init(goal)
+	board.init(goal, 15, 15)
 	populate_tanks()
 
 func _process(delta: float) -> void:

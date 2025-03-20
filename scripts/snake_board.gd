@@ -3,6 +3,7 @@ class_name SnakeBoard
 
 const TILE_LAYER = 2
 const MOVE_INTERVAL: float = .09
+const BOARD_OFFSET = Vector2(16,16)
 const EAT_SFX = preload("res://resources/sfx/Hit damage 1.wav")
 signal game_won
 signal game_lost
@@ -16,13 +17,13 @@ var goal
 var sm: SnakeManager
 var pp: PelletPlacer
 
-func init(score: int) -> void:
+func init(score: int, width: int, height: int) -> void:
 	sm = %SnakeManager
 	sm.init()
 	pp = %PelletPlacer
-	pp.init(20*20)
+	pp.init(width*height)
 	goal = score
-	populate_grid(20,20)
+	populate_grid(width,height)
 	populate_snake(4,4,3)
 	populate_pellets(4)
 	update_goal()
@@ -35,7 +36,7 @@ func populate_grid(cols: int, rows: int):
 			curr.init(x,y)
 			var y_margin = 2 if y > 0 else 0
 			var x_margin = 2 if x > 0 else 0
-			curr.position = Vector2(x* (curr.get_width() + x_margin), y* (curr.get_height() + y_margin))
+			curr.position = Vector2(x* (curr.get_width() + x_margin), y* (curr.get_height() + y_margin)) + BOARD_OFFSET
 			curr.z_index = TILE_LAYER
 			curr.area_entered.connect(on_tile_entry)
 			add_child(curr)
