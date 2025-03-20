@@ -3,6 +3,7 @@ extends Node2D
 class_name SnakeManager
 
 const FLASH_INTERVAL = .2
+var hurt_sfx = preload("res://resources/sfx/Balloon start riding 2.wav")
 
 @export var FLASH_COLOR: Color
 
@@ -38,12 +39,20 @@ func do_damage() -> bool:
 	if invincible:
 		return false
 	enter_damaged_state()
+	remove_tail()
 	return true
 
 func enter_damaged_state():
 	invincible = true
 	flashing_timer = 0
+	var player = AudioStreamPlayer2D.new()
+	player.stream = hurt_sfx
+	player.volume_db = 0.0
+	add_child(player)
+	player.play()
+
 	await get_tree().create_timer(5.0).timeout
+	player.queue_free()
 	set_flash_state(false)
 	color_board_tiles()
 	invincible = false
@@ -72,3 +81,8 @@ func swap_color():
 	if not is_flashing:
 		active_color = Globals.COLOR_MAP[selected_color]
 		color_board_tiles()
+
+func remove_tail():
+	var back = tiles.pop_back()
+	if(tiles.find(back) == -1):
+		back.clear()

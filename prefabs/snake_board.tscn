@@ -11,6 +11,7 @@ default_font = ExtResource("5_mdhpk")
 default_font_size = 40
 
 [node name="SnakeBoard" type="Node2D"]
+z_index = 1
 script = ExtResource("1_v6n4m")
 
 [node name="SnakeManager" type="Node2D" parent="."]
@@ -21,7 +22,6 @@ FLASH_COLOR = Color(0.840675, 1, 0.824239, 1)
 [node name="PelletPlacer" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_m157m")
-PELLET_COLOR = Color(0.700666, 0.00237593, 0.914757, 1)
 
 [node name="PrimaryIndicator" parent="." instance=ExtResource("4_ed037")]
 unique_name_in_owner = true
@@ -43,3 +43,10 @@ offset_right = 752.0
 offset_bottom = -88.0
 theme = SubResource("Theme_s3ef2")
 text = "Goal: 3/10"
+
+[node name="DebugRect" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(672, 672)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.00784314, 0.00784314, 0.34902, 0.333333)

@@ -1,12 +1,13 @@
 extends Node2D
 class_name PelletPlacer
 
-@export var PELLET_COLOR: Color
+var PELLET_COLOR: Color
 
 var pellet_max: int
 
 func _ready() -> void:
-		seed(5)
+	PELLET_COLOR = Globals.COLOR_MAP[Globals.Colors.PURPLE]
+	seed(5)
 
 func init(tile_count: int):
 	pellet_max = tile_count -1

@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/tile.gd" id="1_lsysh"]
 [ext_resource type="Texture2D" uid="uid://dpboldjw2np63" path="res://resources/TileOutline.png" id="1_va5pj"]
-[ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="2_vuh7a"]
+[ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="2_x864g"]
 [ext_resource type="Texture2D" uid="uid://b4cs0ujqiu7ss" path="res://resources/TileCenter.png" id="3_0dtgw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hbtpl"]
 resource_local_to_scene = true
-shader = ExtResource("2_vuh7a")
+shader = ExtResource("2_x864g")
 shader_parameter/ColorParameter = Color(0.0588235, 0.341176, 0.439216, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqthp"]

@@ -1,6 +1,6 @@
 extends BaseLevel
 
-var goal = 20
+var goal = 15
 
 func _ready():
 	super._ready()

@@ -9,10 +9,6 @@ var state: Contains = Contains.Empty
 
 enum Contains {Empty, Snake, Pellet}
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
 func get_width() -> int:
 	return %Outline.texture.get_width()
 
@@ -22,7 +18,6 @@ func get_height() -> int:
 func init(co_x:int, co_y:int):
 	x = co_x
 	y = co_y
-	
 	
 ## Sets tile as a Snake 
 ## return true if successful, false if cannot

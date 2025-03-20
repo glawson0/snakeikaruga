@@ -3,6 +3,7 @@ class_name SnakeBoard
 
 const TILE_LAYER = 2
 const MOVE_INTERVAL: float = .09
+const EAT_SFX = preload("res://resources/sfx/Hit damage 1.wav")
 signal game_won
 signal game_lost
 
@@ -78,18 +79,16 @@ func process_move() -> bool:
 	if next.is_pellet():
 		add_pellet()
 		ate_pellet = true
+		_play_sfx(EAT_SFX, 3.0)
 	else:
-		var back = sm.tiles.pop_back()
-		if(sm.tiles.find(back) == -1):
-			back.clear()
+		sm.remove_tail()
 	
 	var backtrack = false
 	if not next.set_snake(sm.active_color):
 		sm.do_damage()
-		update_goal()
 		backtrack = true
 	sm.tiles.push_front(next)
-	if ate_pellet:
+	if ate_pellet or backtrack:
 		update_goal()
 	return not backtrack
 
@@ -143,6 +142,17 @@ func on_tile_entry(Area: Area2D):
 	
 func update_goal():
 	var score = sm.tiles.size()
+	if score == 0:
+		game_lost.emit()
 	%ScoreLabel.text = "Goal: %d/%d"%[score, goal]
 	if score == goal:
 		game_won.emit()
+
+func _play_sfx(sfx: AudioStream, volume: float):
+	var player = AudioStreamPlayer2D.new()
+	player.stream = sfx
+	player.volume_db = volume
+	add_child(player)
+	player.play()
+	await player.finished
+	player.queue_free()
