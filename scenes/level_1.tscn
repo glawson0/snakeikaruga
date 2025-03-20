@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://m1tyr4qwnn0i"]
+[gd_scene load_steps=5 format=3 uid="uid://m1tyr4qwnn0i"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_mnlrt"]
 [ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="2_l747a"]
+[ext_resource type="PackedScene" uid="uid://cst3b75p1mfpc" path="res://prefabs/world_environment.tscn" id="2_pcuxp"]
 [ext_resource type="PackedScene" uid="uid://ce2r6mevl3dp2" path="res://addons/gwj_accessibility_scripts/options/rebindable_action.tscn" id="3_7v0jm"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mnlrt")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_pcuxp")]
 
 [node name="SnakeBoard" parent="." instance=ExtResource("2_l747a")]
 unique_name_in_owner = true
