@@ -26,25 +26,28 @@ script = ExtResource("3_m157m")
 [node name="PrimaryIndicator" parent="." instance=ExtResource("4_ed037")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(176, 632)
+position = Vector2(200, -120)
+scale = Vector2(0.6, 0.6)
 
 [node name="SecondaryIndicator" parent="." instance=ExtResource("4_ed037")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(336, 632)
+position = Vector2(296, -120)
 rotation = 3.14159
+scale = Vector2(0.6, 0.6)
 
 [node name="ScoreLabel" type="Label" parent="."]
 unique_name_in_owner = true
 z_index = 1
-offset_left = 120.0
-offset_top = -112.0
-offset_right = 360.0
-offset_bottom = -72.0
+offset_left = 400.0
+offset_top = -136.0
+offset_right = 640.0
+offset_bottom = -96.0
 theme = SubResource("Theme_s3ef2")
 text = "Goal: 3/10"
 
 [node name="DebugRect" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(512, 512)
 offset_right = 40.0
 offset_bottom = 40.0

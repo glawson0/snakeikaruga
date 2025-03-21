@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccmlumorrux0g"]
 
-[ext_resource type="Script" path="res://scripts/tank_bullet.gd" id="1_2wbyl"]
+[ext_resource type="Script" path="res://scripts/tank/tank_bullet.gd" id="1_2wbyl"]
 [ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="2_j40q3"]
-[ext_resource type="Texture2D" uid="uid://dgvi1mvbmm5vy" path="res://resources/tank/BulletCenter.png" id="3_r4h2x"]
-[ext_resource type="Texture2D" uid="uid://iry0ropfucdx" path="res://resources/tank/BulletOutline.png" id="4_m204k"]
+[ext_resource type="Texture2D" uid="uid://cted6oyoiq415" path="res://resources/tank/BulletCenterV2.png" id="3_tqhmx"]
+[ext_resource type="Texture2D" uid="uid://dhl5bwdsi5v3t" path="res://resources/tank/BulletOutlineV2.png" id="4_ay2wa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2437b"]
 resource_local_to_scene = true
@@ -19,10 +19,14 @@ script = ExtResource("1_2wbyl")
 [node name="BulletCenter" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_2437b")
-texture = ExtResource("3_r4h2x")
+texture = ExtResource("3_tqhmx")
 
 [node name="BulletOutline" type="Sprite2D" parent="."]
-texture = ExtResource("4_m204k")
+texture = ExtResource("4_ay2wa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_efxnw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

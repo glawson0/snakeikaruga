@@ -1,18 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://sdhakgfeycjb"]
+[gd_scene load_steps=5 format=3 uid="uid://bmt22xxcsssc3"]
 
-[ext_resource type="Script" path="res://scripts/levels/level_4.gd" id="1_5oulv"]
+[ext_resource type="Script" path="res://scripts/levels/level_4.gd" id="1_5sbvo"]
 [ext_resource type="PackedScene" uid="uid://cst3b75p1mfpc" path="res://prefabs/world_environment.tscn" id="2_e7lo4"]
 [ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="2_kjgka"]
 [ext_resource type="PackedScene" uid="uid://c4m5ycwqbihjo" path="res://prefabs/small_tank.tscn" id="3_xya5n"]
 
 [node name="GameScene" type="Node2D"]
-script = ExtResource("1_5oulv")
+script = ExtResource("1_5sbvo")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_e7lo4")]
 
 [node name="SnakeBoard" parent="." instance=ExtResource("2_kjgka")]
 unique_name_in_owner = true
 position = Vector2(240, 192)
+
+[node name="ColorRect" type="ColorRect" parent="SnakeBoard"]
+offset_right = 510.0
+offset_bottom = 510.0
+color = Color(1, 0, 1, 0.0588235)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1000.0
@@ -32,5 +37,10 @@ rotation = -1.5708
 
 [node name="Tank3" parent="." instance=ExtResource("3_xya5n")]
 unique_name_in_owner = true
-position = Vector2(816, 248)
+position = Vector2(816, 240)
 rotation = 1.5708
+
+[node name="Tank4" parent="." instance=ExtResource("3_xya5n")]
+unique_name_in_owner = true
+position = Vector2(560, 768)
+rotation = 3.14159

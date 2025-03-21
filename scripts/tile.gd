@@ -7,7 +7,7 @@ var x:int
 var y:int
 var state: Contains = Contains.Empty
 
-enum Contains {Empty, Snake, Pellet}
+enum Contains {Empty, Snake, Pellet, Invalid}
 
 func get_width() -> int:
 	return %Outline.texture.get_width()
@@ -15,9 +15,12 @@ func get_width() -> int:
 func get_height() -> int:
 	return %Outline.texture.get_height()
 
-func init(co_x:int, co_y:int):
+func init(co_x:int, co_y:int, is_valid: bool):
 	x = co_x
 	y = co_y
+	if not is_valid:
+		state = Contains.Invalid
+		visible = false
 	
 ## Sets tile as a Snake 
 ## return true if successful, false if cannot
@@ -43,6 +46,9 @@ func is_pellet()-> bool:
 
 func is_empty()-> bool:
 	return state == Contains.Empty
+
+func is_invalid() -> bool:
+	return state != Contains.Invalid
 
 func update_color(color: Color):
 	%Center.material.set_shader_parameter("ColorParameter",color)

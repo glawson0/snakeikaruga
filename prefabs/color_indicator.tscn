@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" path="res://scripts/color_indicator.gd" id="1_6vwce"]
 [ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="1_uctih"]
-[ext_resource type="Texture2D" uid="uid://kv0thxurexyb" path="res://resources/ColorOutline.png" id="1_wirw7"]
 [ext_resource type="Texture2D" uid="uid://buc2c6qx2ltx2" path="res://resources/ColorCenter.png" id="2_67lw4"]
-[ext_resource type="Texture2D" uid="uid://cmtkgy1383mu0" path="res://resources/ColorSelected.png" id="3_jfot7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ph31n"]
 resource_local_to_scene = true
 shader = ExtResource("1_uctih")
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_syisc"]
+load_path = "res://.godot/imported/ColorOutlineV2.png-c84e4e4320b548cdbf04449c6b03d4c5.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jqawe"]
 resource_local_to_scene = true
@@ -21,6 +22,9 @@ resource_local_to_scene = true
 shader = ExtResource("1_uctih")
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_awgt1"]
+load_path = "res://.godot/imported/ColorSelectedV2.png-bc3870b32c934497b94c90ad8f7b2e50.ctex"
+
 [node name="PrimaryIndicator" type="Node2D"]
 position = Vector2(128, 48)
 script = ExtResource("1_6vwce")
@@ -28,7 +32,7 @@ script = ExtResource("1_6vwce")
 [node name="Outline" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_ph31n")
-texture = ExtResource("1_wirw7")
+texture = SubResource("CompressedTexture2D_syisc")
 
 [node name="Center" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -39,4 +43,4 @@ texture = ExtResource("2_67lw4")
 unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_uyxos")
-texture = ExtResource("3_jfot7")
+texture = SubResource("CompressedTexture2D_awgt1")

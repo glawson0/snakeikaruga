@@ -4,7 +4,7 @@ var goal = 20
 
 func _ready():
 	super._ready()
-	board.init(goal, Globals.guide_15x15)
+	board.init(goal, Globals.guide_20x15_M)
 	await start
 	board.start()
 	populate_tanks()
@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	super._process(delta)
 
 func game_won():
-	get_tree().change_scene_to_packed(load("res://scenes/level_5.tscn"))
+	get_tree().change_scene_to_packed(load("res://scenes/level_6.tscn"))
 
 func populate_tanks():
 	var offset = %Tank.get_y_offset()
@@ -23,12 +23,6 @@ func populate_tanks():
 	))
 	var top_lp = ListLocationProvider.new(top_row)
 	%Tank.init(top_lp, Globals.Colors.GREEN)
-	
-	var bot_row: Array = board.map[board.map.size()-1].map(func(row):
-		return map_row(row, offset, -1)
-	)
-	var bot_lp = ListLocationProvider.new(bot_row)
-	%Tank4.init(bot_lp, Globals.Colors.RED)
 	
 	var left_col: Array = board.map.map(func(row):
 		return map_col(0,row, offset, -1)
@@ -41,3 +35,6 @@ func populate_tanks():
 	)
 	var right_lp = ListLocationProvider.new(right_col)
 	%Tank3.init(right_lp, Globals.Colors.GREEN)
+
+	%PivotTank.init(Globals.Colors.GREEN)
+	%PivotTank2.init(Globals.Colors.RED)

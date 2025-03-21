@@ -10,30 +10,34 @@ signal game_lost
 
 @onready var TILE_PREFAB = preload("res://prefabs/tile.tscn")
 
-var map = []
+var map
 var timer=0.0
 var goal
+var started= false
 
 var sm: SnakeManager
 var pp: PelletPlacer
 
-func init(score: int, width: int, height: int) -> void:
+func init(score: int, guide:Array) -> void:
 	sm = %SnakeManager
 	sm.init()
 	pp = %PelletPlacer
-	pp.init(width*height)
 	goal = score
-	populate_grid(width,height)
+	populate_grid(guide)
+	pp.init(guide.size() * guide[0].size())
 	populate_snake(4,4,3)
 	populate_pellets(4)
 	update_goal()
 
-func populate_grid(cols: int, rows: int):
-	for y in range(0,rows):
+func populate_grid(guide:Array):
+	var count = 0
+	map = []
+	for y in range(0, guide.size()):
+		var guide_row = guide[y]
 		var row = []
-		for x in range(0, cols):
+		for x in range(0, guide_row.size()):
 			var curr: BoardTile = TILE_PREFAB.instantiate()
-			curr.init(x,y)
+			curr.init(x, y, guide_row[x] == '_')
 			var y_margin = 2 if y > 0 else 0
 			var x_margin = 2 if x > 0 else 0
 			curr.position = Vector2(x* (curr.get_width() + x_margin), y* (curr.get_height() + y_margin)) + BOARD_OFFSET
@@ -42,6 +46,7 @@ func populate_grid(cols: int, rows: int):
 			add_child(curr)
 			row.append(curr)
 		map.append(row)
+	return count
 
 func populate_snake(x: int, y: int, length: int):
 	for i in range(0,length):
@@ -66,7 +71,12 @@ func add_pellet():
 		tile = get_tile_from_index(index)
 	tile.set_pellet(pp.get_color())
 	
+func start():
+	started = true
+	
 func _process(delta: float) -> void:
+	if( started == false):
+		return
 	timer += delta
 	while(timer > MOVE_INTERVAL):
 		timer -= MOVE_INTERVAL
@@ -97,36 +107,36 @@ func get_next_tile(dir: Globals.Direction, front: BoardTile) -> BoardTile:
 	var next: BoardTile
 	match dir:
 		Globals.Direction.UP:
-			if(front.y > 0):
+			if(front.y > 0 and map[front.y-1][front.x].is_invalid()):
 				next = map[front.y-1][front.x]
-			elif(front.x<map[0].size()-1):
+			elif(front.x<map[0].size()-1 and map[front.y][front.x+1].is_invalid):
 				next = map[front.y][front.x+1]
 				sm.direction = Globals.Direction.RIGHT
 			else:
 				next = map[front.y][front.x-1]
 				sm.direction = Globals.Direction.LEFT
 		Globals.Direction.RIGHT:
-			if(front.x < map[0].size()-1):
+			if(front.x < map[0].size()-1 and map[front.y][front.x+1].is_invalid()):
 				next = map[front.y][front.x+1]
-			elif(front.y < map.size()-1):
+			elif(front.y < map.size()-1 and map[front.y+1][front.x].is_invalid):
 				next = map[front.y+1][front.x]
 				sm.direction = Globals.Direction.DOWN
 			else:
 				next = map[front.y-1][front.x]
 				sm.direction = Globals.Direction.UP
 		Globals.Direction.DOWN:
-			if(front.y < map.size()-1):
+			if(front.y < map.size()-1 and map[front.y+1][front.x].is_invalid()):
 				next = map[front.y+1][front.x]
-			elif(front.x < map[0].size()-1):
+			elif(front.x < map[0].size()-1 and map[front.y][front.x+1].is_invalid()):
 				next = map[front.y][front.x+1]
 				sm.direction = Globals.Direction.RIGHT
 			else:
 				next = map[front.y][front.x-1]
 				sm.direction = Globals.Direction.LEFT
 		Globals.Direction.LEFT:
-			if(front.x > 0):
+			if(front.x > 0 and map[front.y][front.x-1].is_invalid()):
 				next = map[front.y][front.x-1]
-			elif(front.y > 0):
+			elif(front.y > 0 and map[front.y-1][front.x].is_invalid()):
 				next = map[front.y-1][front.x]
 				sm.direction = Globals.Direction.UP
 			else:

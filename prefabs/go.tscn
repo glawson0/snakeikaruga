@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://4lapc11wxhh8"]
+
+[ext_resource type="Theme" uid="uid://dt40ni53dq6eb" path="res://transition_text.tres" id="1_qplys"]
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 400.0
+color = Color(0, 0, 0, 0.482353)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 8.0
+offset_right = 800.0
+offset_bottom = 368.0
+theme = ExtResource("1_qplys")
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 400
+bbcode_enabled = true
+text = "[center]GO[/center]"
+fit_content = true

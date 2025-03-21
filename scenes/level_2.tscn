@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b12a5gxn8o5eg"]
+[gd_scene load_steps=7 format=3 uid="uid://b12a5gxn8o5eg"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_8jnp6"]
 [ext_resource type="PackedScene" uid="uid://cst3b75p1mfpc" path="res://prefabs/world_environment.tscn" id="2_n0ldt"]
 [ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="2_ob36n"]
 [ext_resource type="PackedScene" uid="uid://c4m5ycwqbihjo" path="res://prefabs/small_tank.tscn" id="4_viv5b"]
+[ext_resource type="Theme" uid="uid://cjl21jh7dmu32" path="res://resources/menu/main_menu_theme.tres" id="5_4vtn1"]
 [ext_resource type="PackedScene" uid="uid://ce2r6mevl3dp2" path="res://addons/gwj_accessibility_scripts/options/rebindable_action.tscn" id="5_8x43j"]
 
 [node name="GameScene" type="Node2D"]
@@ -23,13 +24,20 @@ color = Color(0, 0.0627451, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="Button" parent="." instance=ExtResource("5_8x43j")]
-offset_left = 472.0
-offset_top = 728.0
-offset_right = 526.0
-offset_bottom = 759.0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 356.0
+offset_bottom = 122.0
+theme = ExtResource("5_4vtn1")
+theme_override_font_sizes/font_size = 30
 disabled = true
 action = "swap_color"
 
 [node name="Tank" parent="." instance=ExtResource("4_viv5b")]
 unique_name_in_owner = true
 position = Vector2(272, 128)
+
+[node name="Tank2" parent="." instance=ExtResource("4_viv5b")]
+unique_name_in_owner = true
+position = Vector2(464, 768)
+rotation = 3.14159

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://m1tyr4qwnn0i"]
+[gd_scene load_steps=5 format=3 uid="uid://m1tyr4qwnn0i"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_mnlrt"]
 [ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="2_l747a"]
 [ext_resource type="PackedScene" uid="uid://cst3b75p1mfpc" path="res://prefabs/world_environment.tscn" id="2_pcuxp"]
 [ext_resource type="PackedScene" uid="uid://ce2r6mevl3dp2" path="res://addons/gwj_accessibility_scripts/options/rebindable_action.tscn" id="3_7v0jm"]
-[ext_resource type="Theme" uid="uid://cjl21jh7dmu32" path="res://resources/menu/main_menu_theme.tres" id="5_eofib"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mnlrt")
@@ -23,45 +22,37 @@ color = Color(0, 0.0627451, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="Button" parent="." instance=ExtResource("3_7v0jm")]
-offset_left = 200.0
-offset_top = 24.0
-offset_right = 254.0
-offset_bottom = 55.0
-theme = ExtResource("5_eofib")
-theme_override_font_sizes/font_size = 20
+offset_left = 448.0
+offset_top = 896.0
+offset_right = 502.0
+offset_bottom = 927.0
 disabled = true
 toggle_mode = false
 action = "up"
 
 [node name="Button2" parent="." instance=ExtResource("3_7v0jm")]
-offset_left = 136.0
-offset_top = 88.0
-offset_right = 190.0
-offset_bottom = 119.0
-theme = ExtResource("5_eofib")
-theme_override_font_sizes/font_size = 20
+offset_left = 384.0
+offset_top = 960.0
+offset_right = 438.0
+offset_bottom = 991.0
 disabled = true
 toggle_mode = false
 action = "left"
 
 [node name="Button3" parent="." instance=ExtResource("3_7v0jm")]
-offset_left = 200.0
-offset_top = 88.0
-offset_right = 254.0
-offset_bottom = 119.0
-theme = ExtResource("5_eofib")
-theme_override_font_sizes/font_size = 20
+offset_left = 448.0
+offset_top = 960.0
+offset_right = 502.0
+offset_bottom = 991.0
 disabled = true
 toggle_mode = false
 action = "down"
 
 [node name="Button4" parent="." instance=ExtResource("3_7v0jm")]
-offset_left = 264.0
-offset_top = 88.0
-offset_right = 318.0
-offset_bottom = 119.0
-theme = ExtResource("5_eofib")
-theme_override_font_sizes/font_size = 20
+offset_left = 512.0
+offset_top = 960.0
+offset_right = 566.0
+offset_bottom = 991.0
 disabled = true
 toggle_mode = false
 action = "right"

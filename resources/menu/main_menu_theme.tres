@@ -5,6 +5,7 @@
 
 [resource]
 default_font_size = 100
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/fonts/font = ExtResource("1_deadl")
 RichTextLabel/constants/line_separation = 3
 RichTextLabel/fonts/bold_font = ExtResource("2_1lxi1")

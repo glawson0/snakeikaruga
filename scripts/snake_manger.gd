@@ -51,7 +51,7 @@ func enter_damaged_state():
 	add_child(player)
 	player.play()
 
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	player.queue_free()
 	set_flash_state(false)
 	color_board_tiles()
