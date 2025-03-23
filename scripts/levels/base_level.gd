@@ -5,7 +5,7 @@ var ready_slide = preload("res://prefabs/ready.tscn")
 var go_slide = preload("res://prefabs/go.tscn")
 var clear_slide = preload("res://prefabs/clear.tscn")
 var loose_slide = preload("res://prefabs/loose.tscn")
-
+var level
 
 signal start
 const slide_y = 200
@@ -57,6 +57,7 @@ func game_lost():
 	get_tree().reload_current_scene()
 
 func loose_announce():
+	add_stats()
 	board.started=false
 	var loose_instance = loose_slide.instantiate()
 	add_child(loose_instance)
@@ -72,6 +73,7 @@ func loose_announce():
 	game_lost()
 
 func win_announce():
+	add_stats()
 	board.sm.invincible = true
 	board.started=false
 	var clear_instance = clear_slide.instantiate()
@@ -98,3 +100,13 @@ func map_col(col,row, offset, offset_scale) -> Vector2:
 	var pos = to_local(row[col].global_position)
 	pos.x = pos.x + (offset * offset_scale)
 	return pos
+
+func add_stats():
+	if Globals.stats.has(level):
+		var stats: Array = Globals.stats[level]
+		stats[0] += board.bactrack_cout
+		stats[1] += board.hit_count
+	else:
+		var stats =[board.bactrack_cout, board.hit_count]
+		Globals.stats[level] = stats
+	

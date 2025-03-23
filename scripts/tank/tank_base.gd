@@ -38,5 +38,4 @@ func shoot(cannon: Node2D, b_color: Globals.Colors):
 	bullet.rotation = cannon_rotation
 	get_parent().add_child(bullet)
 	bullet.position = get_parent().to_local(cannon.global_position) + SPAWN_OFFSET.rotated(cannon_rotation)
-	bullet.z_index = 1
 	_play_sfx(shoot_sound, 0)

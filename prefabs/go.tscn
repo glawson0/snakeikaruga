@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://4lapc11wxhh8"]
+[gd_scene load_steps=3 format=3 uid="uid://4lapc11wxhh8"]
 
+[ext_resource type="Script" path="res://scripts/go.gd" id="1_334g8"]
 [ext_resource type="Theme" uid="uid://dt40ni53dq6eb" path="res://transition_text.tres" id="1_qplys"]
 
 [node name="Root" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_334g8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -17,6 +19,7 @@ offset_bottom = 400.0
 color = Color(0, 0, 0, 0.482353)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 200.0
 offset_top = 8.0

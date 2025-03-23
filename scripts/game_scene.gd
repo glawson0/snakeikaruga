@@ -4,7 +4,7 @@ var goal = 10
 
 func _ready():
 	board = %SnakeBoard
-	board.init(goal)
+	board.init(goal, Globals.guide_15x15)
 	board.game_won.connect(game_won)
 	populate_tanks()
 

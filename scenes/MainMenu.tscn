@@ -76,7 +76,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_i0qbq")
 theme_override_constants/line_separation = 13
 theme_override_font_sizes/normal_font_size = 43
-text = "A Game by LawnchairMD and DJ TurboDracula"
+text = "A Game by LawnchairMD and Rouji"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menus/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -131,17 +131,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -165.0
-offset_top = -162.0
-offset_right = 165.0
-offset_bottom = 162.0
+offset_left = -296.0
+offset_top = -340.0
+offset_right = 304.0
+offset_bottom = 795.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="OptionsMenu/VBoxContainer2"]
-custom_minimum_size = Vector2(330, 0)
 layout_mode = 2
 theme = ExtResource("1_i0qbq")
+theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "[center]Input"
 fit_content = true
@@ -152,65 +152,108 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Up"
+theme_override_constants/separation = 12
+alignment = 1
 
-[node name="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer" instance=ExtResource("3_x5bqt")]
+[node name="Label" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_i0qbq")
+theme_override_font_sizes/font_size = 60
+text = "Up"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i0qbq")
+theme_override_font_sizes/font_size = 60
+text = "Down"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i0qbq")
+theme_override_font_sizes/font_size = 60
+text = "Left"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i0qbq")
+theme_override_font_sizes/font_size = 60
+text = "Right
+"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i0qbq")
+theme_override_font_sizes/font_size = 60
+text = "Swap
+"
+horizontal_alignment = 2
+
+[node name="Label6" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i0qbq")
+theme_override_font_sizes/font_size = 30
+text = "Color Blind"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("3_x5bqt")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
 action = "up"
+
+[node name="Button2" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("3_x5bqt")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+action = "down"
+
+[node name="Button3" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("3_x5bqt")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+action = "left"
+
+[node name="Button4" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("3_x5bqt")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+action = "right"
+
+[node name="Button5" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("3_x5bqt")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+action = "color_swap"
+
+[node name="CheckBox" type="CheckBox" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_i0qbq")
+theme_override_constants/outline_size = 50
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Down"
-
-[node name="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer2" instance=ExtResource("3_x5bqt")]
-layout_mode = 2
-action = "down"
-
 [node name="HBoxContainer3" type="HBoxContainer" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 alignment = 1
-
-[node name="Label" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Left"
-
-[node name="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer3" instance=ExtResource("3_x5bqt")]
-layout_mode = 2
-action = "left"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-text = "Right
-"
-
-[node name="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer4" instance=ExtResource("3_x5bqt")]
-layout_mode = 2
-action = "right"
-
 [node name="HBoxContainer5" type="HBoxContainer" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 alignment = 1
-
-[node name="Label" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer5"]
-layout_mode = 2
-text = "Swap
-"
-
-[node name="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer5" instance=ExtResource("3_x5bqt")]
-layout_mode = 2
-action = "color_swap"
 
 [node name="VolumeBox" type="HBoxContainer" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
@@ -218,18 +261,22 @@ alignment = 1
 
 [node name="Label" type="Label" parent="OptionsMenu/VBoxContainer2/VBoxContainer/VolumeBox"]
 layout_mode = 2
+theme = ExtResource("1_i0qbq")
+theme_override_font_sizes/font_size = 60
 text = "Volume"
 
 [node name="VolumeSlider" parent="OptionsMenu/VBoxContainer2/VBoxContainer/VolumeBox" instance=ExtResource("6_v0s74")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="BackButton" type="Button" parent="OptionsMenu/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_i0qbq")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 50
 text = "Back"
 
 [connection signal="pressed" from="Menus/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menus/VBoxContainer/OptionsButton" to="OptionsMenu" method="_on_options_button_pressed"]
+[connection signal="toggled" from="OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer2/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="OptionsMenu/VBoxContainer2/VBoxContainer/BackButton" to="OptionsMenu" method="_on_back_button_pressed"]

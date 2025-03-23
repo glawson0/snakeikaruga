@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce2r6mevl3dp2"]
+[gd_scene load_steps=3 format=3 uid="uid://ce2r6mevl3dp2"]
 
 [ext_resource type="Script" path="res://addons/gwj_accessibility_scripts/options/rebindable_action.gd" id="1"]
+[ext_resource type="Theme" uid="uid://cjl21jh7dmu32" path="res://resources/menu/main_menu_theme.tres" id="1_1031c"]
 
 [node name="Button" type="Button"]
 offset_right = 21.0
 offset_bottom = 20.0
+theme = ExtResource("1_1031c")
+theme_override_font_sizes/font_size = 20
 toggle_mode = true
 text = "Space"
 script = ExtResource("1")

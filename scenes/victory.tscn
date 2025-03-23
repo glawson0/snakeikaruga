@@ -59,6 +59,225 @@ text = "[center]Thank you for playing.
 "
 fit_content = true
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Menus"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label11" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level"
+
+[node name="Label" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Intro
+"
+
+[node name="Label2" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "2 Tanks"
+
+[node name="Label3" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "4 Tanks"
+
+[node name="Label4" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "2 Colors"
+
+[node name="Label5" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Arches"
+
+[node name="Label6" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Flying V"
+
+[node name="Label7" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Encircled"
+
+[node name="Label8" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Arches V2"
+
+[node name="Label9" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Donut"
+
+[node name="Label10" type="Label" parent="Menus/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Boss FigHT"
+
+[node name="BackTracks" type="VBoxContainer" parent="Menus/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Backtracks"
+
+[node name="BackTrackLabel1" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 1
+"
+
+[node name="BackTrackLabel2" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 2"
+
+[node name="BackTrackLabel3" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 3"
+
+[node name="BackTrackLabel4" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 4"
+
+[node name="BackTrackLabel5" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 5"
+
+[node name="BackTrackLabel6" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 6"
+
+[node name="BackTrackLabel7" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 7"
+
+[node name="BackTrackLabel8" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 8"
+
+[node name="BackTrackLabel9" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 9"
+
+[node name="BackTrackLabel10" type="Label" parent="Menus/HBoxContainer/BackTracks"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 10
+"
+
+[node name="Hits" type="VBoxContainer" parent="Menus/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Hits"
+
+[node name="HitLabel1" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 1
+"
+
+[node name="HitLabel2" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 2"
+
+[node name="HitLabel3" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 3"
+
+[node name="HitLabel4" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 4"
+
+[node name="HitLabel5" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 5"
+
+[node name="HitLabel6" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 6"
+
+[node name="HitLabel7" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 7"
+
+[node name="HitLabel8" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 8"
+
+[node name="HitLabel9" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 9"
+
+[node name="HitLabel10" type="Label" parent="Menus/HBoxContainer/Hits"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/font_size = 40
+text = "Level 10
+"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Menus"]
 layout_mode = 2
 size_flags_horizontal = 4

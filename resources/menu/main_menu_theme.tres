@@ -1,12 +1,21 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cjl21jh7dmu32"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cjl21jh7dmu32"]
 
 [ext_resource type="FontFile" uid="uid://h2e6j0cqjrkl" path="res://resources/menu/HomeVideo-BLG6G.ttf" id="1_deadl"]
 [ext_resource type="FontFile" uid="uid://cxsnbloco4ten" path="res://resources/menu/HomeVideoBold-R90Dv.ttf" id="2_1lxi1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqifl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjdi8"]
+bg_color = Color(0.381703, 0.381703, 0.381703, 1)
+
 [resource]
 default_font_size = 100
+Button/colors/font_color = Color(0.950119, 0.950119, 0.950119, 1)
 Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/fonts/font = ExtResource("1_deadl")
+Button/styles/hover = SubResource("StyleBoxFlat_fqifl")
+Button/styles/normal = SubResource("StyleBoxFlat_mjdi8")
+Label/fonts/font = ExtResource("1_deadl")
 RichTextLabel/constants/line_separation = 3
 RichTextLabel/fonts/bold_font = ExtResource("2_1lxi1")
 RichTextLabel/fonts/normal_font = ExtResource("1_deadl")

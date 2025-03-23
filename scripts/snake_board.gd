@@ -19,6 +19,8 @@ var started= false
 
 var sm: SnakeManager
 var pp: PelletPlacer
+var bactrack_cout = 0
+var hit_count = 0
 
 func init(score: int, guide:Array, start_location = DEFAULT_START_LOCATION) -> void:
 	sm = %SnakeManager
@@ -99,7 +101,8 @@ func process_move() -> bool:
 	
 	var backtrack = false
 	if not next.set_snake(sm.active_color):
-		sm.do_damage()
+		if sm.do_damage():
+			bactrack_cout +=1
 		backtrack = true
 	sm.tiles.push_front(next)
 	if ate_pellet or backtrack:
@@ -152,6 +155,7 @@ func on_tile_entry(Area: Area2D):
 	if bullet.color != sm.selected_color:
 		if sm.do_damage():
 			update_goal()
+			hit_count += 1
 	bullet.queue_free()
 
 func update_goal():

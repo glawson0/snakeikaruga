@@ -4,6 +4,7 @@ var goal = 20
 
 func _ready():
 	super._ready()
+	level = 7
 	board.init(goal, Globals.guide_20x20_circle)
 	await start
 	board.start()

@@ -6,6 +6,7 @@ var left_tween
 var right_tween
 
 var shoot_time = 1.0
+var started = false
 
 func init():
 	base_init(Globals.Colors.PURPLE)
@@ -27,17 +28,18 @@ func init():
 	left_cannons=[%LCannon,%LCannon2,%LCannon3]
 	right_cannons=[%RCannon,%RCannon2,%RCannon3]
 	
-	left_tween = get_tree().create_tween()
+	left_tween = create_tween()
 	left_tween.tween_property(%PivotCannon,"rotation",-PI/3,2)
 	left_tween.tween_property(%PivotCannon,"rotation",0,2)
 	left_tween.set_loops()
 	
-	right_tween = get_tree().create_tween()
+	right_tween = create_tween()
 	right_tween.tween_property(%PivotCannon2,"rotation",PI/3,2)
 	right_tween.tween_property(%PivotCannon2,"rotation",0,2)
 	right_tween.set_loops()
 	
 	is_idle = true
+	started = true
 
 
 func _process(delta: float) -> void:
@@ -46,7 +48,8 @@ func _process(delta: float) -> void:
 			wing_shoot()
 		else:
 			v_shoot()
-	shoot_time -= delta
+	if started:
+		shoot_time -= delta
 	if shoot_time < 0:
 		shoot_pivots()
 		shoot_time = randf_range(1.0, 4.0)
@@ -57,12 +60,14 @@ func shoot_pivots():
 
 func v_shoot():
 	is_idle = false
-	shoot_outside_v()
-	await get_tree().create_timer(.3).timeout
-	shoot_inside_v()
-	await get_tree().create_timer(.3).timeout
-	shoot_outside_v()
-	await get_tree().create_timer(2).timeout
+	var timer_tween = create_tween()
+	timer_tween.tween_callback(shoot_outside_v)
+	timer_tween.tween_interval(.3)
+	timer_tween.tween_callback(shoot_inside_v)
+	timer_tween.tween_interval(.3)
+	timer_tween.tween_callback(shoot_outside_v)
+	timer_tween.tween_interval(1.2)
+	await timer_tween.finished
 	is_idle = true
 
 
@@ -83,11 +88,11 @@ func wing_shoot():
 	await wing_shoot_series(right_cannons, Globals.Colors.RED)
 	await wing_shoot_series(left_cannons, Globals.Colors.GREEN)
 	await wing_shoot_series(right_cannons, Globals.Colors.RED)
-	await get_tree().create_timer(2).timeout
+	await create_tween().tween_interval(1.2).finished
 	is_idle = true
 	
 func wing_shoot_series(cannons: Array, b_color: Globals.Colors):
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	for cannon in cannons:
 		tween.tween_callback(func(): shoot(cannon,b_color)).set_delay(.1)
 	await tween.finished

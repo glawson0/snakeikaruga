@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://0njo35aagq4p"]
+[gd_scene load_steps=3 format=3 uid="uid://0njo35aagq4p"]
 
+[ext_resource type="Script" path="res://scripts/ready.gd" id="1_7tuti"]
 [ext_resource type="Theme" uid="uid://dt40ni53dq6eb" path="res://transition_text.tres" id="1_32abu"]
 
 [node name="Root" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7tuti")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -17,6 +19,7 @@ offset_bottom = 400.0
 color = Color(0, 0, 0, 0.482353)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 200.0
 offset_top = 104.0
@@ -28,6 +31,7 @@ text = "[center]Ready[/center]"
 fit_content = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
@@ -36,6 +40,7 @@ offset_bottom = 104.0
 color = Color(1, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 152.0
 offset_top = 280.0
