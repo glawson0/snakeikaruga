@@ -4,6 +4,8 @@ class_name SnakeBoard
 const TILE_LAYER = 2
 const MOVE_INTERVAL: float = .09
 const BOARD_OFFSET = Vector2(16,16)
+const DEFAULT_START_LOCATION = Vector2i(4,4)
+
 const EAT_SFX = preload("res://resources/sfx/Hit damage 1.wav")
 signal game_won
 signal game_lost
@@ -18,14 +20,14 @@ var started= false
 var sm: SnakeManager
 var pp: PelletPlacer
 
-func init(score: int, guide:Array) -> void:
+func init(score: int, guide:Array, start_location = DEFAULT_START_LOCATION) -> void:
 	sm = %SnakeManager
 	sm.init()
 	pp = %PelletPlacer
 	goal = score
 	populate_grid(guide)
 	pp.init(guide.size() * guide[0].size())
-	populate_snake(4,4,3)
+	populate_snake(start_location.x, start_location.y,3)
 	populate_pellets(4)
 	update_goal()
 
@@ -37,7 +39,8 @@ func populate_grid(guide:Array):
 		var row = []
 		for x in range(0, guide_row.size()):
 			var curr: BoardTile = TILE_PREFAB.instantiate()
-			curr.init(x, y, guide_row[x] == '_')
+			var is_valid = guide_row[x] == '_' or guide_row[x] == 'p'
+			curr.init(x, y, is_valid, guide_row[x] == '_')
 			var y_margin = 2 if y > 0 else 0
 			var x_margin = 2 if x > 0 else 0
 			curr.position = Vector2(x* (curr.get_width() + x_margin), y* (curr.get_height() + y_margin)) + BOARD_OFFSET
@@ -66,7 +69,7 @@ func get_tile_from_index(index: int) -> BoardTile:
 func add_pellet():
 	var index = pp.next_tile_index()
 	var tile = get_tile_from_index(index)
-	while(not tile.is_empty()):
+	while(not tile.can_be_pellet()):
 		index = pp.next_tile_index()
 		tile = get_tile_from_index(index)
 	tile.set_pellet(pp.get_color())
@@ -148,9 +151,9 @@ func on_tile_entry(Area: Area2D):
 	var bullet = Area as TankBullet
 	if bullet.color != sm.selected_color:
 		if sm.do_damage():
-			bullet.queue_free()
 			update_goal()
-	
+	bullet.queue_free()
+
 func update_goal():
 	var score = sm.tiles.size()
 	if score == 0:

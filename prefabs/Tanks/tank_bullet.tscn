@@ -1,28 +1,28 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccmlumorrux0g"]
 
-[ext_resource type="Script" path="res://scripts/tank/tank_bullet.gd" id="1_2wbyl"]
-[ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="2_j40q3"]
-[ext_resource type="Texture2D" uid="uid://cted6oyoiq415" path="res://resources/tank/BulletCenterV2.png" id="3_tqhmx"]
-[ext_resource type="Texture2D" uid="uid://dhl5bwdsi5v3t" path="res://resources/tank/BulletOutlineV2.png" id="4_ay2wa"]
+[ext_resource type="Script" path="res://scripts/tank/tank_bullet.gd" id="1_1rwxc"]
+[ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="2_ns3l0"]
+[ext_resource type="Texture2D" uid="uid://cted6oyoiq415" path="res://resources/tank/BulletCenterV2.png" id="3_sn12h"]
+[ext_resource type="Texture2D" uid="uid://dhl5bwdsi5v3t" path="res://resources/tank/BulletOutlineV2.png" id="4_ubv86"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2437b"]
 resource_local_to_scene = true
-shader = ExtResource("2_j40q3")
+shader = ExtResource("2_ns3l0")
 shader_parameter/ColorParameter = Color(0.082269, 0.415209, 0.533856, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efxnw"]
 size = Vector2(16, 16)
 
 [node name="TankBullet" type="Area2D"]
-script = ExtResource("1_2wbyl")
+script = ExtResource("1_1rwxc")
 
 [node name="BulletCenter" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_2437b")
-texture = ExtResource("3_tqhmx")
+texture = ExtResource("3_sn12h")
 
 [node name="BulletOutline" type="Sprite2D" parent="."]
-texture = ExtResource("4_ay2wa")
+texture = ExtResource("4_ubv86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_efxnw")

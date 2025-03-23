@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/levels/level_5.gd" id="1_5o48c"]
 [ext_resource type="PackedScene" uid="uid://cst3b75p1mfpc" path="res://prefabs/world_environment.tscn" id="2_qf3ax"]
 [ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="3_34p1h"]
-[ext_resource type="PackedScene" uid="uid://c4m5ycwqbihjo" path="res://prefabs/small_tank.tscn" id="4_62fxp"]
-[ext_resource type="PackedScene" uid="uid://cj8ebg2ro6kbg" path="res://prefabs/pivot_tank.tscn" id="5_pmf40"]
+[ext_resource type="PackedScene" uid="uid://c4m5ycwqbihjo" path="res://prefabs/Tanks/small_tank.tscn" id="4_62fxp"]
+[ext_resource type="PackedScene" uid="uid://cj8ebg2ro6kbg" path="res://prefabs/Tanks/pivot_tank.tscn" id="5_pmf40"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_5o48c")
@@ -16,6 +16,7 @@ unique_name_in_owner = true
 position = Vector2(152, 192)
 
 [node name="ColorRect2" type="ColorRect" parent="SnakeBoard"]
+visible = false
 offset_right = 680.0
 offset_bottom = 510.0
 color = Color(1, 0, 1, 0.0196078)

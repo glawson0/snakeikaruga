@@ -4,6 +4,7 @@ class_name BaseLevel
 var ready_slide = preload("res://prefabs/ready.tscn")
 var go_slide = preload("res://prefabs/go.tscn")
 var clear_slide = preload("res://prefabs/clear.tscn")
+var loose_slide = preload("res://prefabs/loose.tscn")
 
 
 signal start
@@ -14,7 +15,7 @@ var board:SnakeBoard
 func _ready() -> void:
 	board = %SnakeBoard
 	board.game_won.connect(win_announce)
-	board.game_lost.connect(game_lost)
+	board.game_lost.connect(loose_announce)
 	AudioPlayer.play_level_music()
 	
 	var ready_instance = ready_slide.instantiate()
@@ -39,6 +40,8 @@ func _ready() -> void:
 	go_tween.tween_property(go_instance, "position", Vector2(-100,slide_y),.5)
 	go_tween.tween_property(go_instance, "position", Vector2(-1000,slide_y),.2)
 	await go_tween.finished
+	ready_instance.queue_free()
+	go_instance.queue_free()
 	start.emit()
 
 func _process(_delta: float) -> void:
@@ -51,7 +54,22 @@ func _process(_delta: float) -> void:
 		%SnakeBoard.sm.swap_color()
 
 func game_lost():
-	get_tree().change_scene_to_packed(load("res://scenes/MainMenu.tscn"))
+	get_tree().reload_current_scene()
+
+func loose_announce():
+	board.started=false
+	var loose_instance = loose_slide.instantiate()
+	add_child(loose_instance)
+	loose_instance.position = Vector2(0, -400)
+	loose_instance.z_index=3
+	var loose_tween = get_tree().create_tween()
+	loose_tween.set_ease(Tween.EASE_OUT_IN)
+	loose_tween.tween_property(loose_instance, "position", Vector2(0,slide_y - 100),.3)
+	loose_tween.tween_property(loose_instance, "position", Vector2(0,slide_y + 100),1)
+	loose_tween.tween_property(loose_instance, "position", Vector2(0,slide_y + 800),.3)
+	loose_tween.tween_interval(.2)
+	await loose_tween.finished
+	game_lost()
 
 func win_announce():
 	board.sm.invincible = true

@@ -16,6 +16,6 @@ func turn_to_and_shoot(new_rotation: float):
 	var tween = get_tree().create_tween()
 	tween.tween_property(%Cannon, "rotation", new_rotation, abs(maxf(rotation, new_rotation) - minf(rotation, new_rotation))/TANK_ROTATE_SPEED)
 	tween.tween_interval(1)
-	tween.tween_callback(shoot)
+	tween.tween_callback(func(): shoot(%Cannon, color))
 	tween.tween_interval(1)
 	tween.tween_callback(func(): is_idle = true)

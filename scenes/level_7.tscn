@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq5oj6vcy60f4"]
+
+[ext_resource type="Script" path="res://scripts/levels/level_7.gd" id="1_8jqp3"]
+[ext_resource type="PackedScene" uid="uid://cst3b75p1mfpc" path="res://prefabs/world_environment.tscn" id="2_cs2uo"]
+[ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="3_tlqjq"]
+[ext_resource type="PackedScene" uid="uid://cj8ebg2ro6kbg" path="res://prefabs/Tanks/pivot_tank.tscn" id="4_nly21"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_8jqp3")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_cs2uo")]
+
+[node name="SnakeBoard" parent="." instance=ExtResource("3_tlqjq")]
+unique_name_in_owner = true
+position = Vector2(160, 192)
+
+[node name="ColorRect2" type="ColorRect" parent="SnakeBoard"]
+visible = false
+offset_right = 680.0
+offset_bottom = 680.0
+color = Color(1, 0, 1, 0.0196078)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1000.0
+offset_bottom = 1000.0
+mouse_filter = 2
+color = Color(0, 0.0627451, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="PivotTank" parent="." instance=ExtResource("4_nly21")]
+unique_name_in_owner = true
+position = Vector2(256, 224)
+rotation = -0.785398
+
+[node name="PivotTank2" parent="." instance=ExtResource("4_nly21")]
+unique_name_in_owner = true
+position = Vector2(144, 400)
+rotation = -1.13446
+
+[node name="PivotTank3" parent="." instance=ExtResource("4_nly21")]
+unique_name_in_owner = true
+position = Vector2(144, 664)
+rotation = -2.35619
+
+[node name="PivotTank4" parent="." instance=ExtResource("4_nly21")]
+unique_name_in_owner = true
+position = Vector2(296, 848)
+rotation = 3.7001
+
+[node name="PivotTank5" parent="." instance=ExtResource("4_nly21")]
+unique_name_in_owner = true
+position = Vector2(704, 848)
+rotation = -3.7001
+
+[node name="PivotTank6" parent="." instance=ExtResource("4_nly21")]
+unique_name_in_owner = true
+position = Vector2(856, 664)
+rotation = 2.35619
+
+[node name="PivotTank7" parent="." instance=ExtResource("4_nly21")]
+unique_name_in_owner = true
+position = Vector2(856, 400)
+rotation = 1.13446
+
+[node name="PivotTank8" parent="." instance=ExtResource("4_nly21")]
+unique_name_in_owner = true
+position = Vector2(712, 224)
+rotation = 0.785398

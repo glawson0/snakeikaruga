@@ -1,16 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj8ebg2ro6kbg"]
+[gd_scene load_steps=7 format=3 uid="uid://cj8ebg2ro6kbg"]
 
 [ext_resource type="Script" path="res://scripts/tank/pivot_tank.gd" id="1_mw70v"]
 [ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="2_40a0g"]
-[ext_resource type="Texture2D" uid="uid://buc13qu8dikc6" path="res://resources/tank/CannonCenterV2.png" id="3_wcpmi"]
-[ext_resource type="Texture2D" uid="uid://bpe41qbw8oi45" path="res://resources/tank/CannonOutline.png" id="4_ufsca"]
+[ext_resource type="PackedScene" uid="uid://clmaf55bil0u4" path="res://prefabs/Tanks/cannon.tscn" id="2_a2xw6"]
 [ext_resource type="Texture2D" uid="uid://dn7e3n8f1thet" path="res://resources/tank/PivotTankCenter.png" id="5_3akxe"]
 [ext_resource type="Texture2D" uid="uid://cdbcypksj2mup" path="res://resources/tank/PivotTankOutline.png" id="6_p5i7r"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6adnu"]
-resource_local_to_scene = true
-shader = ExtResource("2_40a0g")
-shader_parameter/ColorParameter = Color(0.082269, 0.415209, 0.533856, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k3m8j"]
 resource_local_to_scene = true
@@ -20,19 +14,10 @@ shader_parameter/ColorParameter = Color(0.082269, 0.415209, 0.533856, 1)
 [node name="PivotTank" type="Node2D"]
 script = ExtResource("1_mw70v")
 
-[node name="Cannon" type="Node2D" parent="."]
+[node name="Cannon" parent="." instance=ExtResource("2_a2xw6")]
 unique_name_in_owner = true
 position = Vector2(0, 24)
-
-[node name="CannonCenter" type="Sprite2D" parent="Cannon"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_6adnu")
-position = Vector2(0, 16)
-texture = ExtResource("3_wcpmi")
-
-[node name="CannonOutline" type="Sprite2D" parent="Cannon"]
-position = Vector2(0, 16)
-texture = ExtResource("4_ufsca")
+rotation = 0.0
 
 [node name="Body" type="Node2D" parent="."]
 position = Vector2(-32, 0)

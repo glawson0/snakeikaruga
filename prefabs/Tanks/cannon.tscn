@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://clmaf55bil0u4"]
+
+[ext_resource type="Script" path="res://scripts/tank/cannon.gd" id="1_ei1qg"]
+[ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="2_cunqa"]
+[ext_resource type="Texture2D" uid="uid://buc13qu8dikc6" path="res://resources/tank/CannonCenterV2.png" id="3_yrf0h"]
+[ext_resource type="Texture2D" uid="uid://bpe41qbw8oi45" path="res://resources/tank/CannonOutline.png" id="4_qgbly"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6adnu"]
+resource_local_to_scene = true
+shader = ExtResource("2_cunqa")
+shader_parameter/ColorParameter = Color(0.082269, 0.415209, 0.533856, 1)
+
+[node name="Cannon" type="Node2D"]
+position = Vector2(-8, 16)
+rotation = 0.523599
+script = ExtResource("1_ei1qg")
+
+[node name="CannonCenter" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_6adnu")
+position = Vector2(0, 16)
+texture = ExtResource("3_yrf0h")
+
+[node name="CannonOutline" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("4_qgbly")

@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://bamrn88yryoh1"]
+
+[ext_resource type="Script" path="res://scripts/tank/boss.gd" id="1_8ee8r"]
+[ext_resource type="PackedScene" uid="uid://clmaf55bil0u4" path="res://prefabs/Tanks/cannon.tscn" id="1_8ptah"]
+[ext_resource type="Texture2D" uid="uid://cmrtxntf1ndqn" path="res://resources/tank/BossCenterv2.png" id="2_ai12k"]
+[ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="3_x47n4"]
+[ext_resource type="Texture2D" uid="uid://dlkra38fho3kn" path="res://resources/tank/BossOutlinev2.png" id="3_xeo5u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e10i7"]
+shader = ExtResource("3_x47n4")
+shader_parameter/ColorParameter = Color(0.082269, 0.415209, 0.533856, 1)
+
+[node name="Boss" type="Node2D"]
+script = ExtResource("1_8ee8r")
+
+[node name="LeftArm" type="Node2D" parent="."]
+position = Vector2(-440, 0)
+
+[node name="LCannon" parent="LeftArm" instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(-56, 96)
+rotation = -0.785398
+
+[node name="LCannon2" parent="LeftArm" instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(-40.0001, 80)
+rotation = -0.785398
+
+[node name="LCannon3" parent="LeftArm" instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(-24, 64)
+rotation = -0.785398
+
+[node name="PivotCannon" parent="." instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(-332, 68)
+rotation = 0.0
+
+[node name="Cannon" parent="." instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(-208, 68)
+rotation = 0.610865
+
+[node name="Cannon2" parent="." instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(-200, 68)
+rotation = -0.610865
+
+[node name="Cannon3" parent="." instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(-8, 68)
+
+[node name="Cannon4" parent="." instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(5, 68)
+rotation = -0.523599
+
+[node name="Cannon5" parent="." instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(200, 68)
+
+[node name="Cannon6" parent="." instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(208, 68)
+rotation = -0.523599
+
+[node name="PivotCannon2" parent="." instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(334, 68)
+rotation = 0.0
+
+[node name="RightArm" type="Node2D" parent="."]
+position = Vector2(440, 0)
+
+[node name="RCannon" parent="RightArm" instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(56, 96)
+rotation = 0.785398
+
+[node name="RCannon2" parent="RightArm" instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(40, 80)
+rotation = 0.785398
+
+[node name="RCannon3" parent="RightArm" instance=ExtResource("1_8ptah")]
+unique_name_in_owner = true
+position = Vector2(24, 64)
+rotation = 0.785398
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="BodyCenter" type="Sprite2D" parent="Body"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_e10i7")
+texture = ExtResource("2_ai12k")
+
+[node name="Outline" type="Sprite2D" parent="Body"]
+texture = ExtResource("3_xeo5u")

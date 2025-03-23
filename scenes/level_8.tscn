@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwquhxsixrqgm"]
+
+[ext_resource type="Script" path="res://scripts/levels/level_8.gd" id="1_vaubu"]
+[ext_resource type="PackedScene" uid="uid://cst3b75p1mfpc" path="res://prefabs/world_environment.tscn" id="2_0e7an"]
+[ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="3_wv4k5"]
+[ext_resource type="PackedScene" uid="uid://cj8ebg2ro6kbg" path="res://prefabs/Tanks/pivot_tank.tscn" id="4_ok0f1"]
+[ext_resource type="PackedScene" uid="uid://ccwxmuivtfncb" path="res://prefabs/Tanks/v_tank.tscn" id="5_eg4ma"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_vaubu")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_0e7an")]
+
+[node name="SnakeBoard" parent="." instance=ExtResource("3_wv4k5")]
+unique_name_in_owner = true
+position = Vector2(160, 192)
+
+[node name="ColorRect3" type="ColorRect" parent="SnakeBoard"]
+offset_right = 680.0
+offset_bottom = 510.0
+color = Color(1, 0, 1, 0.0196078)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1000.0
+offset_bottom = 1000.0
+mouse_filter = 2
+color = Color(0, 0.0627451, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="PivotTank" parent="." instance=ExtResource("4_ok0f1")]
+unique_name_in_owner = true
+position = Vector2(336, 704)
+rotation = 3.14159
+
+[node name="PivotTank2" parent="." instance=ExtResource("4_ok0f1")]
+unique_name_in_owner = true
+position = Vector2(640, 704)
+rotation = 3.14159
+
+[node name="VTank" parent="." instance=ExtResource("5_eg4ma")]
+unique_name_in_owner = true
+position = Vector2(448, 128)
+
+[node name="VTank2" parent="." instance=ExtResource("5_eg4ma")]
+unique_name_in_owner = true
+position = Vector2(104, 320)
+rotation = -1.5708
+
+[node name="VTank3" parent="." instance=ExtResource("5_eg4ma")]
+unique_name_in_owner = true
+position = Vector2(896, 320)
+rotation = 1.5708

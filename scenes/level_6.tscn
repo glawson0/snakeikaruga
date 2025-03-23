@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/levels/level_6.gd" id="1_kutv1"]
 [ext_resource type="PackedScene" uid="uid://cst3b75p1mfpc" path="res://prefabs/world_environment.tscn" id="2_r212p"]
 [ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="3_uhedp"]
-[ext_resource type="PackedScene" uid="uid://cj8ebg2ro6kbg" path="res://prefabs/pivot_tank.tscn" id="5_knlp3"]
+[ext_resource type="PackedScene" uid="uid://cj8ebg2ro6kbg" path="res://prefabs/Tanks/pivot_tank.tscn" id="5_knlp3"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_kutv1")
@@ -15,6 +15,7 @@ unique_name_in_owner = true
 position = Vector2(224, 192)
 
 [node name="ColorRect2" type="ColorRect" parent="SnakeBoard"]
+visible = false
 offset_right = 544.0
 offset_bottom = 680.0
 color = Color(1, 0, 1, 0.0196078)
@@ -33,24 +34,23 @@ rotation = -0.785398
 
 [node name="PivotTank2" parent="." instance=ExtResource("5_knlp3")]
 unique_name_in_owner = true
-position = Vector2(736, 232)
-rotation = 0.785398
+position = Vector2(472, 608)
+rotation = 2.35619
 
 [node name="PivotTank3" parent="." instance=ExtResource("5_knlp3")]
 unique_name_in_owner = true
-position = Vector2(472, 608)
+position = Vector2(408, 728)
 rotation = 2.35619
 
 [node name="PivotTank4" parent="." instance=ExtResource("5_knlp3")]
 unique_name_in_owner = true
-position = Vector2(520, 608)
-rotation = -2.35619
-scale = Vector2(1, 1)
+position = Vector2(736, 232)
+rotation = 0.785398
 
 [node name="PivotTank5" parent="." instance=ExtResource("5_knlp3")]
 unique_name_in_owner = true
-position = Vector2(408, 728)
-rotation = 2.35619
+position = Vector2(520, 608)
+rotation = -2.35619
 
 [node name="PivotTank6" parent="." instance=ExtResource("5_knlp3")]
 unique_name_in_owner = true

@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3svhpg6wdfor"]
+
+[ext_resource type="Script" path="res://scripts/victory.gd" id="1_82477"]
+[ext_resource type="Theme" uid="uid://cjl21jh7dmu32" path="res://resources/menu/main_menu_theme.tres" id="2_rywy7"]
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_82477")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1000, 1000)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Menus" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -167.5
+offset_right = 390.0
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 56
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menus"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+theme_override_font_sizes/normal_font_size = 186
+bbcode_enabled = true
+text = "[center]You Win!"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Menus"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_rywy7")
+theme_override_constants/line_separation = 13
+theme_override_font_sizes/normal_font_size = 43
+bbcode_enabled = true
+text = "[center]Thank you for playing.
+"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 45
+
+[node name="StartButton" type="Button" parent="Menus/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rywy7")
+text = "Main Menu"
+
+[connection signal="pressed" from="Menus/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

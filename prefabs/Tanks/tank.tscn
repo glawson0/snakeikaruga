@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5aa1mfkw4h5w"]
+
+[ext_resource type="Script" path="res://scripts/tank/tank.gd" id="1_72nir"]
+[ext_resource type="PackedScene" uid="uid://clmaf55bil0u4" path="res://prefabs/Tanks/cannon.tscn" id="2_u47gw"]
+[ext_resource type="Shader" path="res://resources/tileCenterV3.gdshader" id="3_0w2xq"]
+[ext_resource type="Texture2D" uid="uid://bixxijjxcp5q" path="res://resources/tank/SquareTankCenter.png" id="4_fl75t"]
+[ext_resource type="Texture2D" uid="uid://cbqamlbwsclo2" path="res://resources/tank/SquareTankOutline.png" id="5_vbgk4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k3m8j"]
+resource_local_to_scene = true
+shader = ExtResource("3_0w2xq")
+shader_parameter/ColorParameter = Color(0.082269, 0.415209, 0.533856, 1)
+
+[node name="Tank" type="Node2D"]
+script = ExtResource("1_72nir")
+
+[node name="Cannon2" parent="." instance=ExtResource("2_u47gw")]
+unique_name_in_owner = true
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(-32, 0)
+
+[node name="BodyCenter" type="Sprite2D" parent="Body"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_k3m8j")
+position = Vector2(48, 24)
+texture = ExtResource("4_fl75t")
+
+[node name="BodyOutline" type="Sprite2D" parent="Body"]
+position = Vector2(48, 24)
+texture = ExtResource("5_vbgk4")

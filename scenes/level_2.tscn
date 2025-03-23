@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_8jnp6"]
 [ext_resource type="PackedScene" uid="uid://cst3b75p1mfpc" path="res://prefabs/world_environment.tscn" id="2_n0ldt"]
 [ext_resource type="PackedScene" uid="uid://slug5iqsl8ee" path="res://prefabs/snake_board.tscn" id="2_ob36n"]
-[ext_resource type="PackedScene" uid="uid://c4m5ycwqbihjo" path="res://prefabs/small_tank.tscn" id="4_viv5b"]
+[ext_resource type="PackedScene" uid="uid://c4m5ycwqbihjo" path="res://prefabs/Tanks/small_tank.tscn" id="4_viv5b"]
 [ext_resource type="Theme" uid="uid://cjl21jh7dmu32" path="res://resources/menu/main_menu_theme.tres" id="5_4vtn1"]
 [ext_resource type="PackedScene" uid="uid://ce2r6mevl3dp2" path="res://addons/gwj_accessibility_scripts/options/rebindable_action.tscn" id="5_8x43j"]
 
