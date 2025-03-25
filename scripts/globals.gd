@@ -2,7 +2,7 @@ extends Node
 
 enum Direction {UP, DOWN, LEFT, RIGHT}
 enum Colors {GREEN, RED, PURPLE}
-var COLOR_MAP = [Color.GREEN, Color.RED, Color.PURPLE * Color(1.2,1.2,1.2,1)]
+var COLOR_MAP = [Color.GREEN * 1.3, Color.RED * 1.3, Color.PURPLE * Color(1.3,1.3,1.3,1)]
 var stats = {}
 
 const guide_15x15 = [
